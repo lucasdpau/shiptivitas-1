@@ -75,4 +75,9 @@ export default class Board extends React.Component {
       </div>
     );
   }
+
+  componentDidMount(){
+    var swimlanes = document.getElementsByClassName("Swimlane-dragColumn");
+    Dragula([swimlanes[0], swimlanes[1], swimlanes[2]]);
+  }
 }
