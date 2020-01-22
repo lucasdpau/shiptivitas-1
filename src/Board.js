@@ -78,6 +78,19 @@ export default class Board extends React.Component {
 
   componentDidMount(){
     var swimlanes = document.getElementsByClassName("Swimlane-dragColumn");
-    Dragula([swimlanes[0], swimlanes[1], swimlanes[2]]);
+    Dragula([swimlanes[0], swimlanes[1], swimlanes[2]]).on('drop', function(el, target) {
+      el.className = "Card";
+
+      if (target.id == "Backlog") {
+        el.className += " Card-grey";
+      }
+      else if (target.id == "In Progress") {
+        el.className += " Card-blue";
+      }
+      else if (target.id == "Complete") {
+        el.className += " Card-green";
+      }
+
+    });
   }
 }
